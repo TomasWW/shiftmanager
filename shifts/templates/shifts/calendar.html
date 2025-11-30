@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <th>Monday</th>
+    <th>Tuesday</th>
+    <th>Wednesday</th>
+    <th>Thursday</th>
+    <th>Friday</th>
+    <th>Saturday</th>
+    <th>Sunday</th>
+  </tr>
+  {% for day in days %} {% if forloop.counter0|divisibleby:7 %}
+  <tr>
+    {% endif %}
+    <td {% if day.is_weekend %} style="background-color: #eee" {% endif %}>
+      {{ day.date }}
+      <ul>
+        {% for shift in day.shifts %}
+        <li>{{ shift.shift_type }} - {{ shift.employee }}</li>
+        {% endfor %}
+      </ul>
+    </td>
+    {% if forloop.counter|divisibleby:7 %}
+  </tr>
+  {% endif %} {% endfor %}
+</table>
