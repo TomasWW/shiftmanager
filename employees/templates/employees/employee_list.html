@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Employees</title>
+  </head>
+  <body>
+    <h1>Employee List</h1>
+    <a href="{% url 'employee_create' %}">Add Employee</a>
+    <ul>
+      {% for employee in employees %}
+      <li>
+        {{ employee.first_name }} {{ employee.last_name }} - {{ employee.group}}
+      </li>
+      {% empty %}
+      <li>No employees yet.</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
