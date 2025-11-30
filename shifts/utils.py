@@ -3,7 +3,13 @@ from datetime import date
 from .models import Shift
 
 
-def genereate_month(year, month):
+def generate_month(year=None, month=None):
+    today = date.today()
+    if year is None:
+        year = today.year
+    if month is None:
+        month = today.month
+
     cal = calendar.Calendar()
     days = []
     for day in cal.itermonthdates(year, month):

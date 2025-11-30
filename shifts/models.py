@@ -1,4 +1,5 @@
 from django.db import models
+from employees.models import Employee
 
 # Create your models here.
 
@@ -14,7 +15,7 @@ class Shift(models.Model):
     date = models.DateField()
     shift_type = models.CharField(max_length=10, choices=SHIFT_CHOICES)
     employee = models.ForeignKey(
-        "employees.Employee", on_delete=models.CASCADE)
+        Employee, on_delete=models.CASCADE)
 
     def is_weekend(self):
         return self.date.weekday() in [5, 6]
