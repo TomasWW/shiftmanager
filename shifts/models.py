@@ -20,3 +20,13 @@ class Shift(models.Model):
 
     def __str__(self):
         return f"{self.date}. {self.shift_type} ({self.employee})"
+
+
+class ShiftRequirement(models.Model):
+    date = models.DateField
+    morning_requirement = models.PositiveIntegerField(default=5)
+    evening_requirement = models.PositiveIntegerField(default=5)
+    night_requirement = models.PositiveIntegerField(default=2)
+
+    def __str__(self):
+        return f"Requirements for {self.date}"
